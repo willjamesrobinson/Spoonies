@@ -1,0 +1,22 @@
+<h1>Find a Spooner</h1>
+<div class="container">
+  <div class="row">
+  <% @spooners.each do |spooner| %>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <% if spooner.img %>
+
+        <% else %>
+          <img src="app/assets/images/person-placeholder.jpg" class="card-img-top" alt="...">
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= spooner.name %></h5>
+          <p class="card-text"><%= spooner.spoon_type %></p>
+          <p class="card-text">$<%= spooner.price %></p>
+          <%= link_to "See Profile", spooner_path(spooner), class: "btn btn-light" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
