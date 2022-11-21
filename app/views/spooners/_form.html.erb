@@ -5,6 +5,6 @@
   <%= f.input :spoon_type, collection: Spooner::SPOON_TYPE %>
   <%= f.input :price %>
   <%= f.input :overview %>
-  <%= f.input :img, as: :file %>
+  <%= f.input :img, as: :file, input_html: { multiple: true } %>
   <%= f.submit %>
 <% end %>

@@ -1,4 +1,5 @@
 class Spooner < ApplicationRecord
+  has_many_attached :img
   SPOON_TYPE = ["big spoon", "little spoon", "any spoon"]
   GENDER = ["male", "female", "other"]
   validates :name, :spoon_type, :price, :gender, :age, presence: true

@@ -6,10 +6,10 @@
   <% @spooners.each do |spooner| %>
     <div class="col">
       <div class="card" style="width: 18rem;">
-        <% if spooner.img %>
-
+        <% if spooner.img.attached? %>
+          <%= cl_image_tag spooner.img.first.key, height: 280, width: 280, crop: :fill %>
         <% else %>
-          <img src="app/assets/images/person-placeholder.jpg" class="card-img-top" alt="...">
+          <%= image_tag "person-placeholder.jpg",  width: 280 , height: 280, crop: :fill %>
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= spooner.name %></h5>

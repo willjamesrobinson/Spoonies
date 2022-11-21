@@ -41,7 +41,7 @@ class SpoonersController < ApplicationController
   private
 
   def spooner_params
-    params.require(:spooner).permit(:name, :age, :spoon_type, :gender, :price, :overview, :img)
+    params.require(:spooner).permit(:name, :age, :spoon_type, :gender, :price, :overview, img: [])
   end
 
   def set_spooner
