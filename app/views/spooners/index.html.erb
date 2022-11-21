@@ -1,2 +1,18 @@
-<h1>Spooners#index</h1>
-<p>Find me in app/views/spooners/index.html.erb</p>
+<h1>Find a Spooner</h1>
+<div class="container">
+  <div class="row">
+  <% @spooners.each do |spooner| %>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= spooner.name %></h5>
+          <p class="card-text"><%= spooner.spoon_type %></p>
+          <p class="card-text">$<%= spooner.price %></p>
+          <%= link_to "See Profile", spooner_path(spooner), class: "btn btn-light" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
