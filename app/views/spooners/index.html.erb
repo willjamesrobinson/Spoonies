@@ -4,7 +4,11 @@
   <% @spooners.each do |spooner| %>
     <div class="col">
       <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <% if spooner.img %>
+
+        <% else %>
+          <img src="app/assets/images/person-placeholder.jpg" class="card-img-top" alt="...">
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= spooner.name %></h5>
           <p class="card-text"><%= spooner.spoon_type %></p>
