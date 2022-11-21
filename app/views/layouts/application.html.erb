@@ -11,6 +11,30 @@
   </head>
 
   <body>
+  <%# navbar %>
     <%= yield %>
+    <%# footer %>
+  <!-- Footer -->
+    <div class="container">
+      <footer class="d-flex flex-wrap align-items-center justify-content-between ">
+
+        <!-- Section: Spoonies 2022 -->
+        <p class="col-md-4 mb-0"> © Spoonies 2022 </p>
+
+        <!-- Section: Spoon image -->
+        <a href="#" class="d-flex align-items-center justify-content-center">
+          <%= image_tag "spoon.png",  width:"40", height:"40", class:"d-inline-block align-middle"%>
+        </a>
+
+        <!-- Section: Footer words with links -->
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Where We Spoon</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Spoon Crew</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact Us</a></li>
+        </ul>
+      </footer>
+    </div>
   </body>
 </html>
