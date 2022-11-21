@@ -8,13 +8,22 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%# <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %> %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
+    <style>
+      #footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 30px;
+      height: 100px;   /* Height of the footer */
+    }
+  </style>
   </head>
 
-  <body>  
+  <body>
     <nav class="navbar navbar-expand-lg" style="background-color: #432c7a;">
       <div class="container-fluid">
         <a class="navbar-brand" style="color: ##FF8FB1;" href="#" >
@@ -39,28 +48,25 @@
         </div>
       </div>
     </nav>
-   
+
     <%= render "shared/flashes" %>
     <%= yield %>
     <%# footer %>
-    
-    <footer class="d-flex flex-wrap align-items-center justify-content-between ">
-      <!-- Section: Spoonies 2022 -->
-      <p class="col-md-4 mb-0"> © Spoonies 2022 </p>
+    <div class="spoonies-footer" id="footer" style="background-color: #432c7a;">
+      <footer class="d-flex flex-wrap align-items-center justify-content-between">
+        <p class="col-md-4 mb-0" style="color: #FF8FB1;"> © Spoonies 2022 </p>
 
-      <!-- Section: Spoon image -->
-      <a href="#" class="d-flex align-items-center justify-content-center">
-        <%= image_tag "spoon.png",  width:"40", height:"40", class:"d-inline-block align-middle"%>
-      </a>
+        <a href="#" class="d-flex align-items-center justify-content-center">
+          <%= image_tag "spoon.png",  width:"40", height:"40", class:"d-inline-block align-middle"%>
+        </a>
 
-      <!-- Section: Footer words with links -->
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Where We Spoon</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Spoon Crew</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact Us</a></li>
-      </ul>
-    </footer>
+        <ul class="nav col-md-4 justify-content-end text-decoration-none" style="color: #FCE2DB;">
+          <li class="nav-item"><p href="#" class="px-2">Help</p></li>
+          <li class="nav-item"><p href="#" class="px-2">FAQs</p></li>
+          <li class="nav-item"><p href="#" class="px-2">Spoon Crew</p></li>
+          <li class="nav-item"><p href="#" class="px-2">Contact Us</p></li>
+        </ul>
+      </footer>
+    </div>
   </body>
 </html>
