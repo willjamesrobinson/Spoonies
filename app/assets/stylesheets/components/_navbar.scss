@@ -1,6 +1,21 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
-  background: white;
+  color: $beige;
+  background-color: #432C7A;
+}
+
+.navbar .nav-link {
+  color: $beige;
+}
+
+.navbar .navbar-toggler {
+  color: white;
+}
+
+.navbar .navbar-brand {
+  color: $beige;
+  font-size: 30px !important;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .navbar-lewagon .navbar-collapse {
