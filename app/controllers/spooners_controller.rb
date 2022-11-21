@@ -1,4 +1,6 @@
 class SpoonersController < ApplicationController
+  skip_before_action :authenticate_user!, only: :home
+  
   def index
     @spooners = Spooner.all
   end
@@ -19,7 +21,11 @@ class SpoonersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  
+  def home
 
+  end
+  
   private
 
   def spooner_params

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'spooners/index'
-  get 'spooners/new'
-  root to: "pages#home"
+  devise_for :users
+  root to: "spooners#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
