@@ -1,0 +1,2 @@
+class Spooner < ApplicationRecord
+end
