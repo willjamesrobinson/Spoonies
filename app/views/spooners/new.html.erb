@@ -1,13 +1,4 @@
 <div class="container">
   <h1>Create new Spooner profile</h1>
-  <%= simple_form_for(@spooner) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :age %>
-    <%= f.input :gender, collection: Spooner::GENDER %>
-    <%= f.input :spoon_type, collection: Spooner::SPOON_TYPE %>
-    <%= f.input :price %>
-    <%= f.input :overview %>
-    <%= f.input :img, as: :file %>
-    <%= f.submit %>
-  <% end %>
+  <%= render "form", spooner: @spooner %>
 </div>
