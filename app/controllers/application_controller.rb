@@ -5,12 +5,10 @@ class ApplicationController < ActionController::Base
 
   private
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :gender, :spoon_type])
-
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :gender, :spoon_type])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name])
   end
 
-  def sing_up_params
-    params.require(:user).permit(:first_name, :age, :gender, :spoon_type, :email, :password, :password_confirmation)
-  end
+  # def sing_up_params
+  #   params.require(:user).permit(:first_name, :age, :gender, :spoon_type, :email, :password, :password_confirmation)
+  # end
 end
