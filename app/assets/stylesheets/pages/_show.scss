@@ -1,0 +1,16 @@
+@import "show";
+
+button {
+  color: #FCE2DB;
+  background-color: #80489C;
+}
+
+.d-flex {
+  background-color: #80489C;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
