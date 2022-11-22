@@ -12,6 +12,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <style>
+      #footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 30px;
+      height: 100px;   /* Height of the footer */
+    }
+  </style>
   </head>
 
   <body>
@@ -52,20 +62,19 @@
     <%= render "shared/flashes" %>
     <%= yield %>
     <%# footer %>
-    <div class="spoonies-footer">
+    <div class="spoonies-footer" id="footer" style="background-color: #432c7a;">
       <footer class="d-flex flex-wrap align-items-center justify-content-between">
-        <p class="col-md-4 mb-0"> © Spoonies 2022 </p>
+        <p class="col-md-4 mb-0" style="color: #FF8FB1;"> © Spoonies 2022 </p>
 
         <a href="#" class="d-flex align-items-center justify-content-center">
           <%= image_tag "spoon.png",  width:"40", height:"40", class:"d-inline-block align-middle"%>
         </a>
 
-        <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Where We Spoon</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Spoon Crew</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact Us</a></li>
+        <ul class="nav col-md-4 justify-content-end text-decoration-none" style="color: #FCE2DB;">
+          <li class="nav-item"><p href="#" class="px-2">Help</p></li>
+          <li class="nav-item"><p href="#" class="px-2">FAQs</p></li>
+          <li class="nav-item"><p href="#" class="px-2">Spoon Crew</p></li>
+          <li class="nav-item"><p href="#" class="px-2">Contact Us</p></li>
         </ul>
       </footer>
     </div>

@@ -1,0 +1,10 @@
+<%= simple_form_for(spooner) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :gender, collection: Spooner::GENDER %>
+  <%= f.input :spoon_type, collection: Spooner::SPOON_TYPE %>
+  <%= f.input :price %>
+  <%= f.input :overview %>
+  <%= f.input :img, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>

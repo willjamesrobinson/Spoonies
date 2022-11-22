@@ -1,15 +1,29 @@
-.spoonies-footer {
-color: $beige;
-background-color: $dark-purple;
-font-family: 'Lucida Sans';
+footer {
+  color: #FCE2DB;
+  background-color: $dark-purple;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
-.nav-item {
-color: $pink;
-background-color: $dark-purple;
-justify-content: space-between;
+a .nav-item {
+  color: #FCE2DB;
+  background-color: $dark-purple;
+  justify-content: space-between;
+  text-decoration: none;
 }
 
 p {
-  color: $beige;
+  color: black;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.spoonies-footer p {
+  color: #FCE2DB ;
+}
+
+.spoonies-footer a {
+  color: #FCE2DB ;
 }
