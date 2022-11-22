@@ -19,3 +19,7 @@ require 'faker'
   }
   Spooner.create(details)
 end
+
+belongs_to :users
+belongs_to :spooners
+validates :details, length: { minimum: 50 }

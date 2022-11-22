@@ -1,5 +1,4 @@
 class Booking < ApplicationRecord
-  belongs_to :users
-  belongs_to :spooners
-  validates :details, length: { minimum: 50 }
+  belongs_to :user
+  belongs_to :spooner
 end
