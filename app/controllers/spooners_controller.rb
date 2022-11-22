@@ -30,7 +30,12 @@ class SpoonersController < ApplicationController
   end
 
   def update
-    @spooner.update(spooner_params)
+    @spooner.update(spooner_params_no_img)
+    if params[:spooner][:img] != [""]
+      params[:spooner][:img].each do |image|
+        @spooner.img.attach(image)
+      end
+    end
     redirect_to spooner_path(@spooner)
   end
 
@@ -43,6 +48,10 @@ class SpoonersController < ApplicationController
 
   def spooner_params
     params.require(:spooner).permit(:name, :age, :spoon_type, :gender, :price, :overview, img: [])
+  end
+
+  def spooner_params_no_img
+    params.require(:spooner).permit(:name, :age, :spoon_type, :gender, :price, :overview)
   end
 
   def set_spooner
