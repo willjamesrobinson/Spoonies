@@ -1,3 +1,12 @@
+<h2> Your Bookings</h2>
 <% @bookings.each do |booking| %>
-<%= booking.user.first_name %>
+<div class="card" style="width: 300px;">
+    <img src="images/thumbnail.svg" class="w-100 border-bottom" alt="...">
+    <div class="card-body">
+        <h5 class="card-title"> <%= "#{booking.spooner.name}, #{booking.spooner.age} "%> </h5>
+        <p class="card-text"> <%= booking.details %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> <strong> <%= booking.date %> </strong></li>
+    </ul>
 <% end %>
