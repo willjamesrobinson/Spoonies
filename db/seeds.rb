@@ -6,7 +6,7 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
+print "seeding started"
 
 10.times do
   details = {
@@ -19,3 +19,5 @@ require 'faker'
   }
   Spooner.create(details)
 end
+
+print "seeding complete"
