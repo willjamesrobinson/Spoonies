@@ -9,8 +9,5 @@
   <p>Price: $<%= @spooner.price %></p>
   <p>Details: <%= @spooner.overview %></p>
   <%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
-  <%= link_to "Delete Spooner",
-  spooner_path(@spooner),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
+  <%= link_to "Delete Spooner", spooner_path(@spooner), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 </div>
