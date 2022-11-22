@@ -1,13 +1,33 @@
-<div class="container">
-  <h1><%= @spooner.name %></h1>
-  <% @spooner.img.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p>Age: <%= @spooner.age %> years</p>
-  <p>Gender: <%= @spooner.gender %></p>
-  <p>Prefers to be: <%= @spooner.spoon_type %></p>
-  <p>Price: $<%= @spooner.price %></p>
-  <p>Details: <%= @spooner.overview %></p>
-  <%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
-  <%= link_to "Delete Spooner", spooner_path(@spooner), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-</div>
+  <div class="d-flex p-2 justify-content-center">
+    <h1><%= @spooner.name %></h1>
+  </div>
+    <div class="row">
+      <div class="col-6">
+        <%= image_tag "person-placeholder.jpg" %>
+          <% @spooner.img.each do |photo| %>
+          <%= cl_image_tag "person-placeholder.jpg", height: 300, width: 400, crop: :fill %>
+          <% end %>
+      </div>
+      <div class="col-6">
+        <h1>Booking Section Here</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 p-5">
+        <h3>Age: <%= @spooner.age %> years</h3>
+        <h3>Gender: <%= @spooner.gender %></h3>
+        <h3>Prefers to be: <%= @spooner.spoon_type %></h3>
+        <h3>Price: $<%= @spooner.price %></h3>
+        <h3>Details: <%= @spooner.overview %></h3>
+      </div>
+      <div class="col-6 p-5">
+        <p>Further info possible</p>
+        <button type="button"><%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
+        </button>
+        <button type="button"> <%= link_to "Delete Spooner",
+            spooner_path(@spooner),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+            %></button>
+      </div>
+    </div>
