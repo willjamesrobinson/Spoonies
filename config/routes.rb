@@ -5,5 +5,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :spooners
+  resources :spooners do
+    resources :bookings, only: %i(new create)
+  end
+  resources :bookings, only: [ :destroy ]
+  get "/bookings/my_bookings", to: "bookings#my_bookings"
+
 end
