@@ -9,8 +9,4 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :gender, :spoon_type])
   end
-
-  def sing_up_params
-    params.require(:user).permit(:first_name, :age, :gender, :spoon_type, :email, :password, :password_confirmation)
-  end
 end
