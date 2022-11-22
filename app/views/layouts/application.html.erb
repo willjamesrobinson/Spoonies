@@ -36,15 +36,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
+          <% if user_signed_in? %>
             <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
+              <%= link_to "About Us", '#', class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign up", '/users/sign_up', class: "nav-link" %>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About Us</a>
             </li>
+          <% end %>
           </ul>
         </div>
       </div>
