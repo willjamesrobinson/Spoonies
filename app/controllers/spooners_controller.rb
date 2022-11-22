@@ -23,6 +23,7 @@ class SpoonersController < ApplicationController
   end
 
   def home
+    @spooners = Spooner.all
   end
 
   def edit
