@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   resources :spooners do
     resources :bookings, only: %i(new create)
   end
-  resources :bookings, only: %i(:destroy)
+  resources :bookings, only: [ :destroy ]
+  get "/bookings/my_bookings", to: "bookings#my_bookings"
+
 end

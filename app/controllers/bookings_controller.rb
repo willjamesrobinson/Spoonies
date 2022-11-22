@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_spooner,
+  before_action :set_spooner, :set_user, only:[:new, :create]
 
   def new
     @booking = Booking.new
@@ -10,9 +10,9 @@ class BookingsController < ApplicationController
     @booking.spooner = @spooner
     @booking.user = @user
     if @booking.save
-      redirect_to
+      redirect_to spooner_path(@spooner)
     else
-      render "spooners/show"
+      render "spooners/new"
     end
   end
 
@@ -22,10 +22,13 @@ class BookingsController < ApplicationController
     redirect_to root_path
   end
 
+  def my_bookings
+    @bookings = current_user.bookings.order(date: :desc)
+  end
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :description, :user_id)
+    params.require(:booking).permit(:date, :details)
   end
 
   def set_spooner
@@ -33,6 +36,7 @@ class BookingsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
   end
+
 end

@@ -1,0 +1,8 @@
+<div class="container">
+  <h2><%=  "New Booking with #{@spooner.name}" %> </h2>
+  <%= simple_form_for [@spooner, @booking] do |f| %>
+  <%= f.input :date %>
+  <%= f.input :details %>
+  <%= f.submit %>
+  <% end %>
+</div>
