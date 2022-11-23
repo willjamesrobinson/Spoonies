@@ -1,0 +1,7 @@
+<div class="container pb-3">
+<%= simple_form_for [spooner, review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit "Submit review", class: "btn btn-light" %>
+<% end %>
+</div>
