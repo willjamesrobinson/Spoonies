@@ -1,36 +1,68 @@
-  <body style="background-color:#FCE2DB opacity:0.6;">
-    <div class="d-flex p-2 m-8 justify-content-center">
-      <h1> 🥄 <%= @spooner.name %> 🥄 </h1>
-    </div>
-    <div class="container">
-    <div class="row">
-        <div class="col-6 p-4 justify-content-center">
-        <% if @spooner.img.attached? %>
-          <% @spooner.img.each do |photo| %>
-            <div><%= cl_image_tag photo.key, height: 300, width: 500, crop: :fill, :style => "margin-bottom: 16px; border-radius: 16px" %></div>
-          <% end %>
-        <% else %>
-          <%= image_tag "person-placeholder.jpg", width: 500 %>
+<body style="background-color:#FCE2DB opacity:0.6;">
+  <div class="d-flex p-2 m-8 justify-content-center">
+    <h1> 🥄 <%= @spooner.name %> 🥄 </h1>
+  </div>
+  <div class="container">
+  <div class="row">
+      <div class="col-6 p-4 justify-content-center">
+      <% if @spooner.img.attached? %>
+        <% @spooner.img.each do |photo| %>
+          <div><%= cl_image_tag photo.key, height: 300, width: 500, crop: :fill, :style => "margin-bottom: 16px; border-radius: 16px" %></div>
         <% end %>
+      <% else %>
+        <%= image_tag "person-placeholder.jpg", width: 500 %>
+      <% end %>
+      </div>
+      <div class="col-6 p-4 m-10 justify-content-center">
+        <div class="p-4" style="border-style:solid; border-radius: 16px;">
+          <h4 style="color:#80489C;" class="mb-3">Age: <%= @spooner.age %> years</h4>
+          <h4 style="color:#80489C;" class="mb-3">Gender: <%= @spooner.gender %></h4>
+          <h4 style="color:#80489C;" class="mb-3">Prefers to be: <%= @spooner.spoon_type %></h4>
+          <h4 style="color:#80489C;" class="mb-3">Price: $<%= @spooner.price %></h4>
+          <h4 style="color:#80489C;" class="mb-3">Details: <%= @spooner.overview %></h4>
         </div>
-        <div class="col-6 p-4 m-10 justify-content-center">
-          <div class="p-4" style="border-style:solid; border-radius: 16px;">
-            <h4 style="color:#80489C;" class="mb-3">Age: <%= @spooner.age %> years</h4>
-            <h4 style="color:#80489C;" class="mb-3">Gender: <%= @spooner.gender %></h4>
-            <h4 style="color:#80489C;" class="mb-3">Prefers to be: <%= @spooner.spoon_type %></h4>
-            <h4 style="color:#80489C;" class="mb-3">Price: $<%= @spooner.price %></h4>
-            <h4 style="color:#80489C;" class="mb-3">Details: <%= @spooner.overview %></h4>
-          </div>
-          <div class="mt-5 d-flex justify-content-between align-items-center" style="margin-right: 20px; margin-left: 20px;">
-            <button class="btn btn-show"><%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
-            </button>
-            <button class="btn btn-show"><%= link_to "Delete Spooner",
-                spooner_path(@spooner),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                %></button>
-              <button class="btn btn-show"><%= link_to "Book Spooner", new_spooner_booking_path(@spooner)  %> </button>
-          </div>
+        <div class="mt-5 d-flex justify-content-between align-items-center" style="margin-right: 20px; margin-left: 20px;">
+          <button class="btn btn-show"><%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
+          </button>
+          <button class="btn btn-show"><%= link_to "Delete Spooner",
+              spooner_path(@spooner),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %></button>
+            <button class="btn btn-show"><%= link_to "Book Spooner", new_spooner_booking_path(@spooner)  %> </button>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+
+<%# Reviews %>
+
+  <div class="container pb-5">
+    <p><strong>Reviews</strong></p>
+    <%= render "reviews/new", { spooner: @spooner, review: @review }  %>
+    <% if @spooner.reviews.size > 0 %>
+    <p><strong>Average rating:
+      <%= (@spooner.reviews.reduce(0) { |sum, review| sum + review.rating }).fdiv(@spooner.reviews.size) %>
+      <iconify-icon icon="material-symbols:star"></iconify-icon>
+    </strong></p>
+    <ul class="list-group">
+      <% @spooner.reviews.each do |review| %>
+        <% if review.content != "" %>
+          <li class="list-group-item"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
+          <small><%= link_to "[Delete]",
+          review_path(review),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
+          </li>
+          <li class="list-group-item mb-3"><em>"<%= review.content %>"</em></li>
+        <% else %>
+          <li class="list-group-item mb-3"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
+          <small><%= link_to "[Delete]",
+          review_path(review),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <br>
+    <% end %>
+  </div>
+</body>

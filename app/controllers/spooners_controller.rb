@@ -3,10 +3,15 @@ class SpoonersController < ApplicationController
   before_action :set_spooner, only: [:show, :edit, :update, :destroy]
 
   def index
-    @spooners = Spooner.all
+    if params[:query].present?
+      @spooners = Spooner.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @spooners = Spooner.all
+    end
   end
 
   def show
+    @review = Review.new
   end
 
   def new
