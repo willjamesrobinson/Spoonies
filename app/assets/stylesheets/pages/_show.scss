@@ -1,10 +1,5 @@
 @import "show";
 
-button {
-  color: #FCE2DB;
-  background-color: #80489C;
-}
-
 .d-flex {
   background-color: #80489C;
 }
@@ -17,4 +12,9 @@ button {
 
 h3 {
   color: black;
+}
+
+.show-page-img {
+  margin-bottom: 16px;
+  border-radius: 8px;
 }
