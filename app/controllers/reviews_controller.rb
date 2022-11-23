@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to spooner_path(@spooner)
     else
-      render :new, status: :unprocessable_entity
+      render "spooners/show", status: :unprocessable_entity
     end
   end
 
