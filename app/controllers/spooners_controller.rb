@@ -1,5 +1,5 @@
 class SpoonersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :index, :show, :new, :create, :edit, :update, :destroy]
+  # skip_before_action :authenticate_user!, only: [:home, :index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_spooner, only: [:show, :edit, :update, :destroy]
 
   def index
