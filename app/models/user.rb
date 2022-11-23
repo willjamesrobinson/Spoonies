@@ -5,9 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
     SPOON_TYPE = ["big spoon", "little spoon", "any spoon"]
     GENDER = ["male", "female", "other"]
-    validates :first_name, :spoon_type, :gender, presence: true
+    validates :first_name, :spoon_type, :gender, :age, presence: true
     validates :spoon_type, inclusion: { in: SPOON_TYPE }
     validates :gender, inclusion: { in: GENDER }
-    has_many :bookings
+    validates_numericality_of :age, only_integer: true
+    has_many :bookings, dependent: :destroy
     has_many :spooners, through: :bookings
+
 end

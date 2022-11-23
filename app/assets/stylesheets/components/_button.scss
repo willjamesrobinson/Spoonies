@@ -1,0 +1,22 @@
+.btn {
+  color: white;
+  background-color: #432C7A;
+  border-color: #432C7A;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #FF8FB1;
+  border-color: #FF8FB1;
+}
+
+.btn:active {
+  color: white;
+  background-color: #FF8FB1;
+  border-color: #FF8FB1;
+}
+
+.btn-secondary {
+  --bs-btn-active-bg: rgb(255, 143, 177, 0.7);
+  --bs-btn-active-border-color: rgb(255, 143, 177, 0.7);
+}

@@ -6,7 +6,7 @@ class Spooner < ApplicationRecord
   validates :spoon_type, inclusion: { in: SPOON_TYPE }
   validates :gender, inclusion: { in: GENDER }
   validates :price, :age, numericality: { only_integer: true }
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
   has_many :reviews, dependent: :destroy
 end
