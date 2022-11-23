@@ -6,7 +6,9 @@
     <div class="form-inputs">
       <%= f.input :first_name,
                   required: true%>
-      <%= f.input :age%>
+      <h6>Age:</h6>
+      <%= f.number_field :age,
+                          required: true%>
       <%= f.input :gender,
                   required: true%>
       <%= f.input :spoon_type %>
