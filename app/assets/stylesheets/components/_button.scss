@@ -1,3 +1,27 @@
+.btn-show {
+  background-color: #432C7A;
+  border-radius: 15px;
+  height: 60px;
+  width: 150px;
+  text-decoration: none;
+
+
+  a {
+  color: #FCE2DB;
+  }
+
+.btn-show:hover {
+  background-color: #FF8FB1;
+}
+
+#form-submit-btn {
+  background-color: #432C7A;
+  border-radius: 15px;
+  height: 60px;
+  width: 150px;
+  color: #FCE2DB;
+ }
+ 
 .btn {
   color: white;
   background-color: #432C7A;
