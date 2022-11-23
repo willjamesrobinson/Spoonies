@@ -1,12 +1,32 @@
-<h2> Your Bookings</h2>
-<% @bookings.each do |booking| %>
-<div class="card" style="width: 300px;">
-    <img src="images/thumbnail.svg" class="w-100 border-bottom" alt="...">
-    <div class="card-body">
-        <h5 class="card-title"> <%= "#{booking.spooner.name}, #{booking.spooner.age} "%> </h5>
-        <p class="card-text"> <%= booking.details %></p>
+<h2> Your Pending Bookings</h2>
+  <div class="row">
+    <% @pending_bookings.each do |booking| %>
+    <div class='col'>
+      <div class="card" style="width: 300px;">
+          <%= cl_image_tag booking.spooner.img.first.key, height: 280, width: 280, crop: :fill, class: "w-100 border-bottom" %>
+          <div class="card-body">
+              <h5 class="card-title"> <%= "#{booking.spooner.name}, #{booking.spooner.age} "%> </h5>
+              <p class="card-text"> <%= booking.details %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item mb-2"> <strong> <%= "Date: #{booking.date}" %> </strong></li>
+          </ul>
+      <% end %>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"> <strong> <%= booking.date %> </strong></li>
-    </ul>
-<% end %>
+  </div>
+<h2>Your Active Bookings</h2>
+  <div class="row">
+    <% @active_bookings.each do |booking| %>
+    <div class='col'>
+      <div class="card" style="width: 300px;">
+          <%= cl_image_tag booking.spooner.img.first.key, height: 280, width: 280, crop: :fill, class: "w-100 border-bottom" %>
+          <div class="card-body">
+              <h5 class="card-title"> <%= "#{booking.spooner.name}, #{booking.spooner.age} "%> </h5>
+              <p class="card-text"> <%= booking.details %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item mb-2"> <strong> <%= "Date: #{booking.date}" %> </strong></li>
+          </ul>
+      <% end %>
+    </div>
+  </div>

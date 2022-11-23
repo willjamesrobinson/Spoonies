@@ -8,7 +8,8 @@ class User < ApplicationRecord
     validates :first_name, :spoon_type, :gender, :age, presence: true
     validates :spoon_type, inclusion: { in: SPOON_TYPE }
     validates :gender, inclusion: { in: GENDER }
-    validates :age, numericality: { only_integer: true }
-    has_many :bookings
+    validates_numericality_of :age, only_integer: true
+    has_many :bookings, dependent: :destroy
     has_many :spooners, through: :bookings
+
 end
