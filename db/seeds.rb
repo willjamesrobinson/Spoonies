@@ -7,7 +7,7 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-print "seeding started"
+puts "seeding started"
 
 10.times do
   details = {
@@ -28,4 +28,4 @@ print "seeding started"
   spooner.save
 end
 
-print "seeding complete"
+puts "seeding complete"
