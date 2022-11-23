@@ -1,6 +1,10 @@
 <div class="container mb-6">
   <%= render "search", spooner: @spooner %>
 
+<div class="container mb-5">
+  <div class="d-flex align-items-center justify-content-end">
+    <button class="btn btn-primary mt-4" type="button">Filters</button>
+  </div>
   <div class="d-flex py-4">
     <div class="row my-2 justify-content-between">
       <% @spooners.each do |spooner| %>
@@ -17,6 +21,10 @@
 
                 <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="mdi:silverware-spoon"></iconify-icon><%=spooner.spoon_type.capitalize%></p>
                 <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="bx:male-female"></iconify-icon><%=spooner.gender.capitalize%></p>
+                <% if spooner.reviews.size > 0 %>
+                <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="material-symbols:star"></iconify-icon>
+                <%= (spooner.reviews.reduce(0) { |sum, review| sum + review.rating }).fdiv(spooner.reviews.size) %></p>
+                <% end %>
               </div>
               <div class="col-2 d-flex align-items-center justify-content-end">
                 <p class="card-text" style="margin-bottom: 0px; color: black; font-size: 36px; margin-right:10px;">$<%=spooner.price%></p>
@@ -27,4 +35,5 @@
       <%end%>
     </div>
   </div>
+  <%= link_to "Create a Spooner Profile", new_spooner_path, class: "btn btn-dark" %>
 </div>

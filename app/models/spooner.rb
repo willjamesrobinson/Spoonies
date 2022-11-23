@@ -8,4 +8,5 @@ class Spooner < ApplicationRecord
   validates :price, :age, numericality: { only_integer: true }
   has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
+  has_many :reviews, dependent: :destroy
 end
