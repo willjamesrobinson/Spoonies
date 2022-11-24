@@ -13,7 +13,8 @@ class SpoonersController < ApplicationController
     @markers = @spooners.geocoded.map do |spooner|
       {
         lat: spooner.latitude,
-        lng: spooner.longitude
+        lng: spooner.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {spooner: spooner})
       }
     end
     authorize @spooners
