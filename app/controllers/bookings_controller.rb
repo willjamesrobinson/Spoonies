@@ -24,6 +24,8 @@ class BookingsController < ApplicationController
 
   def my_bookings
     @bookings = current_user.bookings.order(date: :desc)
+    @pending_bookings = @bookings.where(pending: true)
+    @active_bookings = @bookings.where(pending: false)
   end
   private
 
