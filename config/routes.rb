@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :spooners do
     resources :bookings, only: %i[new create]
-    resources :reviews, only: %i[new create]
+    resources :reviews, only: %i[create]
   end
   resources :bookings, only: [:destroy]
   get "/bookings/my_bookings", to: "bookings#my_bookings"

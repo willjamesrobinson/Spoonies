@@ -38,26 +38,31 @@
     <p><strong>Reviews</strong></p>
     <%= render "reviews/new", { spooner: @spooner, review: @review }  %>
     <% if @spooner.reviews.size > 0 %>
-    <p><strong>Average rating:
-      <%= (@spooner.reviews.reduce(0) { |sum, review| sum + review.rating }).fdiv(@spooner.reviews.size) %>
+    <p><strong>Average rating:</strong>
+      <% @spooner.solid_stars.times do %>
       <iconify-icon icon="material-symbols:star"></iconify-icon>
-    </strong></p>
+      <% end %>
+      <% @spooner.half_stars.times do %>
+      <iconify-icon icon="material-symbols:star-half"></iconify-icon>
+      <% end %>
+      <% @spooner.empty_stars.times do %>
+      <iconify-icon icon="material-symbols:star-outline"></iconify-icon>
+      <% end %>
+    </p>
     <ul class="list-group">
       <% @spooner.reviews.each do |review| %>
-        <% if review.content != "" %>
-          <li class="list-group-item"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
-          <small><%= link_to "[Delete]",
-          review_path(review),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
-          </li>
-          <li class="list-group-item mb-3"><em>"<%= review.content %>"</em></li>
-        <% else %>
-          <li class="list-group-item mb-3"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
-          <small><%= link_to "[Delete]",
-          review_path(review),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
-          </li>
+        <li class="list-group-item">
+        <% review.rating.times do %>
+        <iconify-icon icon="material-symbols:star"></iconify-icon>
         <% end %>
+        <% (5 - review.rating).times do %>
+        <iconify-icon icon="material-symbols:star-outline"></iconify-icon>
+        <% end %>
+        <small><%= link_to "[Delete]",
+        review_path(review),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
+        </li>
+        <li class="list-group-item mb-3"><em><%= review.content %></em></li>
       <% end %>
     </ul>
     <br>
