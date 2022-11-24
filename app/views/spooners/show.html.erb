@@ -1,13 +1,16 @@
-<body style="background-color:#FCE2DB opacity:0.6;">
-  <div class="d-flex p-2 m-8 justify-content-center">
-    <h1> 🥄 <%= @spooner.name %> 🥄 </h1>
-  </div>
-  <div class="container">
-  <div class="row">
-      <div class="col-6 p-4 justify-content-center">
-      <% if @spooner.img.attached? %>
-        <% @spooner.img.each do |photo| %>
-          <div><%= cl_image_tag photo.key, height: 300, width: 500, crop: :fill, :style => "margin-bottom: 16px; border-radius: 16px" %></div>
+  <body style="background-color:#FCE2DB opacity:0.6;">
+    <div class="d-flex p-2 m-8 justify-content-center">
+      <h1> 🥄 <%= @spooner.name %> 🥄 </h1>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-6 p-4 justify-content-center">
+        <% if @spooner.img.attached? %>
+          <% @spooner.img.each do |photo| %>
+            <div><%= cl_image_tag photo.key, height: 300, width: 500, crop: :fill, :style => "margin-bottom: 16px; border-radius: 16px" %></div>
+          <% end %>
+        <% else %>
+          <%= image_tag "person-placeholder.jpg", width: 500 %>
         <% end %>
       <% else %>
         <%= image_tag "person-placeholder.jpg", width: 500 %>
@@ -22,13 +25,19 @@
           <h4 style="color:#80489C;" class="mb-3">Details: <%= @spooner.overview %></h4>
         </div>
         <div class="mt-5 d-flex justify-content-between align-items-center" style="margin-right: 20px; margin-left: 20px;">
-          <button class="btn btn-show"><%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
-          </button>
-          <button class="btn btn-show"><%= link_to "Delete Spooner",
-              spooner_path(@spooner),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-              %></button>
-            <button class="btn btn-show"><%= link_to "Book Spooner", new_spooner_booking_path(@spooner)  %> </button>
+          <% if policy(@spooner).edit? %>
+            <button class="btn btn-show"><%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
+            </button>
+          <% end %>
+          <% if policy(@spooner).destroy? %>
+            <button class="btn btn-show"><%= link_to "Delete Spooner",
+            spooner_path(@spooner),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+            %></button>
+          <% end %>
+          <div class="p-5 d-flex justify-content-center">
+            <button class="btn btn-show"><%= link_to "Get Spoonin\'", new_spooner_booking_path(@spooner)  %></button>
+          </div>
         </div>
       </div>
     </div>
@@ -40,26 +49,31 @@
     <p><strong>Reviews</strong></p>
     <%= render "reviews/new", { spooner: @spooner, review: @review }  %>
     <% if @spooner.reviews.size > 0 %>
-    <p><strong>Average rating:
-      <%= (@spooner.reviews.reduce(0) { |sum, review| sum + review.rating }).fdiv(@spooner.reviews.size) %>
+    <p><strong>Average rating:</strong>
+      <% @spooner.solid_stars.times do %>
       <iconify-icon icon="material-symbols:star"></iconify-icon>
-    </strong></p>
+      <% end %>
+      <% @spooner.half_stars.times do %>
+      <iconify-icon icon="material-symbols:star-half"></iconify-icon>
+      <% end %>
+      <% @spooner.empty_stars.times do %>
+      <iconify-icon icon="material-symbols:star-outline"></iconify-icon>
+      <% end %>
+    </p>
     <ul class="list-group">
       <% @spooner.reviews.each do |review| %>
-        <% if review.content != "" %>
-          <li class="list-group-item"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
+        <li class="list-group-item">
+          <% review.rating.times do %>
+          <iconify-icon icon="material-symbols:star"></iconify-icon>
+          <% end %>
+          <% (5 - review.rating).times do %>
+          <iconify-icon icon="material-symbols:star-outline"></iconify-icon>
+          <% end %>
           <small><%= link_to "[Delete]",
           review_path(review),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
-          </li>
-          <li class="list-group-item mb-3"><em>"<%= review.content %>"</em></li>
-        <% else %>
-          <li class="list-group-item mb-3"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
-          <small><%= link_to "[Delete]",
-          review_path(review),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
-          </li>
-        <% end %>
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(review).destroy? %></small>
+        </li>
+        <li class="list-group-item mb-3"><em><%= review.content %></em></li>
       <% end %>
     </ul>
     <br>
