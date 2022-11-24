@@ -11,6 +11,10 @@ puts "cleaning database"
 Spooner.destroy_all
 puts "seeding started"
 
+ADDRESSES = [
+  "Carlton, Melbourne", "Richmond, Melbourne", "Collingwood, Melbourne", "Fitzroy, Melbourne", "Mona Vale, Sydney", "Surry Hills, Sydney", "Bondi, Sydney"
+]
+
 SPOONER_DETAILS = [
   {
     name: "Big Larry",
@@ -150,9 +154,6 @@ REVIEW_CONTENT = [
   { rating: 4, content: "Lunch & spoon" }
 ]
 
-ADDRESSES = [
-  "Carlton, Melbourne", "Richmond, Melbourne", "Collingwood, Melbourne", "Fitzroy, Melbourne", "Mona Vale, Sydney", "Surry Hills, Sydney", "Bondi, Sydney"
-]
 
 spoon_counter = 0
 review_counter = 0
