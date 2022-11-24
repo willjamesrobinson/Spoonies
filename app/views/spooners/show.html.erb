@@ -22,13 +22,17 @@
           <h4 style="color:#80489C;" class="mb-3">Details: <%= @spooner.overview %></h4>
         </div>
         <div class="mt-5 d-flex justify-content-between align-items-center" style="margin-right: 20px; margin-left: 20px;">
-          <button class="btn btn-show"><%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
-          </button>
-          <button class="btn btn-show"><%= link_to "Delete Spooner",
-              spooner_path(@spooner),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-              %></button>
-            <button class="btn btn-show"><%= link_to "Book Spooner", new_spooner_booking_path(@spooner)  %> </button>
+          <% if policy(@spooner).edit? %>
+            <button class="btn btn-show"><%= link_to "Edit Spooner", edit_spooner_path(@spooner) %>
+            </button>
+          <% end %>
+          <% if policy(@spooner).destroy? %>
+            <button class="btn btn-show"><%= link_to "Delete Spooner",
+            spooner_path(@spooner),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+            %></button>
+          <% end %>
+          <button class="btn btn-show"><%= link_to "Book Spooner", new_spooner_booking_path(@spooner)  %> </button>
         </div>
       </div>
     </div>
@@ -46,20 +50,12 @@
     </strong></p>
     <ul class="list-group">
       <% @spooner.reviews.each do |review| %>
-        <% if review.content != "" %>
           <li class="list-group-item"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
           <small><%= link_to "[Delete]",
           review_path(review),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(review).destroy? %></small>
           </li>
           <li class="list-group-item mb-3"><em>"<%= review.content %>"</em></li>
-        <% else %>
-          <li class="list-group-item mb-3"><%= review.rating %> <iconify-icon icon="material-symbols:star"></iconify-icon>
-          <small><%= link_to "[Delete]",
-          review_path(review),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></small>
-          </li>
-        <% end %>
       <% end %>
     </ul>
     <br>

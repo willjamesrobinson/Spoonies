@@ -8,18 +8,24 @@ class SpoonersController < ApplicationController
     else
       @spooners = Spooner.all
     end
+    authorize @spooners
   end
 
   def show
     @review = Review.new
+    authorize @spooner
+    authorize @review
   end
 
   def new
     @spooner = Spooner.new
+    authorize @spooner
   end
 
   def create
     @spooner = Spooner.new(spooner_params)
+    @spooner.user = current_user
+    authorize @spooner
     if @spooner.save
       redirect_to spooner_path(@spooner)
     else
@@ -29,9 +35,11 @@ class SpoonersController < ApplicationController
 
   def home
     @spooners = Spooner.all
+    authorize @spooners
   end
 
   def edit
+    authorize @spooner
   end
 
   def update
@@ -41,11 +49,13 @@ class SpoonersController < ApplicationController
         @spooner.img.attach(image)
       end
     end
+    authorize @spooner
     redirect_to spooner_path(@spooner)
   end
 
   def destroy
     @spooner.destroy
+    authorize @spooner
     redirect_to spooners_path, status: :see_other
   end
 
