@@ -8,6 +8,14 @@ class SpoonersController < ApplicationController
     else
       @spooners = Spooner.all
     end
+    @spooners = Spooner.all
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @spooners.geocoded.map do |spooner|
+      {
+        lat: spooner.latitude,
+        lng: spooner.longitude
+      }
+    end
   end
 
   def show
