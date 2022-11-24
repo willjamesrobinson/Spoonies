@@ -9,6 +9,8 @@ class Spooner < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
   has_many :reviews, dependent: :destroy
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def average_rating
     sum_ratings = reviews.reduce(0) { |sum, review| sum + review.rating }

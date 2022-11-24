@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/assets/application", "data-turbo-track": "reload", defer: true %>
@@ -38,14 +39,14 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
           <% if user_signed_in? %>
-          <li class="nav-item">
-          <%= link_to "My Bookings", bookings_my_bookings_path, class: "nav-link" %>
-          </li>
             <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+            <%= link_to "My Bookings", bookings_my_bookings_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "About Us", '#', class: 'nav-link' %>
+              <%= link_to "Become a Spooner", new_spooner_path, class: "nav-link"  %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
             </li>
           <% else %>
             <li class="nav-item">

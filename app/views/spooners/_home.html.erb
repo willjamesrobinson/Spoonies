@@ -40,5 +40,12 @@
       <%end%>
     </div>
   </div>
-  <%= link_to "Create a Spooner Profile", new_spooner_path, class: "btn btn-dark mb-5" %>
+  <%= link_to "Create a Spooner Profile", new_spooner_path, class: "btn btn-dark, mb-5" %>
+  <div style = "margin-bottom: 100px;">
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>

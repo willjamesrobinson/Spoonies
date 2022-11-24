@@ -9,7 +9,6 @@ require "open-uri"
 #   Character.create(name: "Luke", movie: movies.first)
 puts "cleaning database"
 Spooner.destroy_all
-User.destroy_all
 puts "seeding started"
 
 SPOONER_DETAILS = [
@@ -19,7 +18,8 @@ SPOONER_DETAILS = [
     spoon_type: "big spoon",
     gender: "male",
     price: 30,
-    overview: "I'm ready to Netflix and spoon."
+    overview: "I'm ready to Netflix and spoon.",
+    address: ADDRESSES.sample
   },
   {
     name: Faker::Superhero.name,
@@ -27,7 +27,8 @@ SPOONER_DETAILS = [
     spoon_type: "any spoon",
     gender: "female",
     price: 45,
-    overview: "Open to all spooning experiences"
+    overview: "Open to all spooning experiences",
+    address: ADDRESSES.sample
   },
   {
     name: Faker::Superhero.name,
@@ -35,7 +36,8 @@ SPOONER_DETAILS = [
     spoon_type: "big spoon",
     gender: "male",
     price: 40,
-    overview: "My cat hates me so I'll spoon you instead."
+    overview: "My cat hates me so I'll spoon you instead.",
+    address: ADDRESSES.sample
   },
   {
     name: "Kim Jong Spoon",
@@ -43,7 +45,8 @@ SPOONER_DETAILS = [
     spoon_type: "little spoon",
     gender: "male",
     price: 35,
-    overview: "I'll be your spoon if you'll be mine."
+    overview: "I'll be your spoon if you'll be mine.",
+    address: ADDRESSES.sample
   },
   {
     name: Faker::Superhero.name,
@@ -51,7 +54,8 @@ SPOONER_DETAILS = [
     spoon_type: "little spoon",
     gender: "female",
     price: 70,
-    overview: "Only spoons accepted, no other cutlery need apply."
+    overview: "Only spoons accepted, no other cutlery need apply.",
+    address: ADDRESSES.sample
   },
   {
     name: "Big Biceps Bonita",
@@ -59,7 +63,8 @@ SPOONER_DETAILS = [
     spoon_type: "any spoon",
     gender: "female",
     price: 50,
-    overview: "As a spoon I'm the whole package, I'm basically a spork."
+    overview: "As a spoon I'm the whole package, I'm basically a spork.",
+    address: ADDRESSES.sample
   },
   {
     name: "Farmer George",
@@ -67,7 +72,8 @@ SPOONER_DETAILS = [
     spoon_type: "any spoon",
     gender: "male",
     price: 10,
-    overview: "Is a shovel just a garden spoon? Because I like to spoon outdoors ;)"
+    overview: "Is a shovel just a garden spoon? Because I like to spoon outdoors ;)",
+    address: ADDRESSES.sample
   },
   {
     name: Faker::Superhero.name,
@@ -75,7 +81,8 @@ SPOONER_DETAILS = [
     spoon_type: "big spoon",
     gender: "male",
     price: 15,
-    overview: "I'm a bit of a tease spoon."
+    overview: "I'm a bit of a tease spoon.",
+    address: ADDRESSES.sample
   },
   {
     name: Faker::Superhero.name,
@@ -83,7 +90,8 @@ SPOONER_DETAILS = [
     spoon_type: "any spoon",
     gender: "female",
     price: 65,
-    overview: "Tell all your friends about my spooning skills, it will cause quite a stir!"
+    overview: "Tell all your friends about my spooning skills, it will cause quite a stir!",
+    address: ADDRESSES.sample
   },
   {
     name: Faker::Superhero.name,
@@ -91,7 +99,8 @@ SPOONER_DETAILS = [
     spoon_type: "little spoon",
     gender: "female",
     price: 45,
-    overview: "Are you soup because I want to spoon you."
+    overview: "Are you soup because I want to spoon you.",
+    address: ADDRESSES.sample
   }
 ]
 
@@ -141,12 +150,19 @@ REVIEW_CONTENT = [
   { rating: 4, content: "Lunch & spoon" }
 ]
 
+ADDRESSES = [
+  "Carlton, Melbourne", "Richmond, Melbourne", "Collingwood, Melbourne", "Fitzroy, Melbourne", "Mona Vale, Sydney", "Surry Hills, Sydney", "Bondi, Sydney"
+]
+
 spoon_counter = 0
 review_counter = 0
 img_counter = 0
 
 # Seed Spooner
+num = 0
 10.times do
+
+  num += 1
   spooner = Spooner.create(SPOONER_DETAILS[spoon_counter])
   # Add Images
   2.times do
@@ -163,6 +179,11 @@ img_counter = 0
     review_counter += 1
   end
   spoon_counter += 1
+  if spoon_counter == 1
+    puts "#{num} Spooner Spooning"
+  else
+    puts "#{num} Spooners Spooning"
+  end
 end
 
 puts "seeding complete"
