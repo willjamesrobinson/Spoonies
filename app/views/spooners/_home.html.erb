@@ -1,4 +1,4 @@
-<div class="container mb-6">
+<div class="container mb-5">
   <%= render "search", spooner: spooner %>
 
   <div class="d-flex py-4">
@@ -18,8 +18,17 @@
                 <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="mdi:silverware-spoon"></iconify-icon><%=spooner.spoon_type.capitalize%></p>
                 <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="bx:male-female"></iconify-icon><%=spooner.gender.capitalize%></p>
                 <% if spooner.reviews.size > 0 %>
-                <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="material-symbols:star"></iconify-icon>
-                <%= (spooner.reviews.reduce(0) { |sum, review| sum + review.rating }).fdiv(spooner.reviews.size) %></p>
+                <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;">
+                <% spooner.solid_stars.times do %>
+                <iconify-icon icon="material-symbols:star"></iconify-icon>
+                <% end %>
+                <% spooner.half_stars.times do %>
+                <iconify-icon icon="material-symbols:star-half"></iconify-icon>
+                <% end %>
+                <% spooner.empty_stars.times do %>
+                <iconify-icon icon="material-symbols:star-outline"></iconify-icon>
+                <% end %>
+                </p>
                 <% end %>
               </div>
               <div class="col-2 d-flex align-items-center justify-content-end">
@@ -31,5 +40,12 @@
       <%end%>
     </div>
   </div>
-  <%= link_to "Create a Spooner Profile", new_spooner_path, class: "btn btn-dark" %>
+  <%= link_to "Create a Spooner Profile", new_spooner_path, class: "btn btn-dark, mb-5" %>
+  <div style = "margin-bottom: 100px;">
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>

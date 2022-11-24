@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_spooner, only: %i[new create]
+  before_action :set_spooner, only: %i[create]
 
   # def new
   #   @review = Review.new

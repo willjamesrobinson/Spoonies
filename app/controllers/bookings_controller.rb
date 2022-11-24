@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @bookmark.destroy
     authorize @booking
-    redirect_to root_path
+    redirect_to "/bookings/my_bookings"
   end
 
   def my_bookings
@@ -30,6 +30,9 @@ class BookingsController < ApplicationController
     @pending_bookings = @bookings.where(pending: true)
     @active_bookings = @bookings.where(pending: false)
     authorize @bookings
+
+    # bookings.date = @bookings do
+    # @past_bookings =
   end
 
   private
