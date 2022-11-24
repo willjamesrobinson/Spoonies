@@ -3,7 +3,7 @@
   <div class="d-flex py-4">
     <div class="row my-2 justify-content-between">
       <% @pending_bookings.each do |booking| %>
-        <div class="card col-3 rounded d-flex justify-content-between mb-4" style="width: 280px; padding: 0px;">
+        <div class="card col-3 rounded d-flex justify-content-between m-1" style="width: 280px; padding: 0px;">
           <% if booking.spooner.img.attached? %>
             <%= cl_image_tag booking.spooner.img.first.key, height: 280, width: 279, crop: :fill, class: "w-100 border-bottom" %>
           <% else %>
@@ -16,9 +16,11 @@
                 <p class="card-text"> <%= booking.details %></p>
                 <p class ="card-text m-0"> <strong> <%= "Date: " + "#{booking.date.split('T')[0]}" %> </p> </strong>
                 <p class ="card-text m-0"> <strong> <%= " Time: #{booking.date.split('T')[1]} "  %> </p> </strong>
-                <%= link_to "X",
+              </div>
+              <div class="col-2 d-flex align-items-end justify-content-end">
+                <strong><%= link_to "X",
                 booking_path(booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm"%>
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-delete"%> </strong>
                 <%# <ul class="list-group list-group-flush"> %>
                     <%# <li class="list-group-item mb-2"> <strong> <%= "Date: #{booking.date}" </strong></li> %>
                 <%# </ul> %>

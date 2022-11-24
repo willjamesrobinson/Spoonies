@@ -44,3 +44,11 @@
   --bs-btn-active-bg: rgb(255, 143, 177, 0.7);
   --bs-btn-active-border-color: rgb(255, 143, 177, 0.7);
 }
+
+.btn-delete {
+  background-color: crimson;
+  color: black;
+  border-radius: 20%;
+  text-decoration: double;
+  border: none;
+}
