@@ -7,8 +7,9 @@ class Spooner < ApplicationRecord
   validates :gender, inclusion: { in: GENDER }
   validates :price, :age, numericality: { only_integer: true }
   has_many :bookings, dependent: :destroy
-  has_many :users, through: :bookings
   has_many :reviews, dependent: :destroy
+  belongs_to :user
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 

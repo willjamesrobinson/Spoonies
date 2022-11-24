@@ -3,12 +3,14 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.spooner = @spooner
-    @booking.user = @user
+    @booking.user = @user # @review.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to spooner_path(@spooner)
     else
@@ -18,8 +20,8 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    # raise
-    @booking.destroy
+    @bookmark.destroy
+    authorize @booking
     redirect_to "/bookings/my_bookings"
   end
 
@@ -27,9 +29,12 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings.order(date: :desc)
     @pending_bookings = @bookings.where(pending: true)
     @active_bookings = @bookings.where(pending: false)
+    authorize @bookings
+
     # bookings.date = @bookings do
     # @past_bookings =
   end
+
   private
 
   def booking_params
