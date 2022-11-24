@@ -3,11 +3,12 @@
   background-color: #432C7A;
   border-radius: 15px;
   height: 60px;
-  width: 150px;
+  width: 400px;
   text-decoration: none;
 
   a {
-  color: #FCE2DB;
+  color: #FCE2DB !important;
+  font-size: 20px;
   }
 }
 
@@ -21,4 +22,26 @@
   height: 60px;
   width: 150px;
   color: #FCE2DB;
+  margin-bottom: 20px;
 }
+
+#form-submit-btn:hover {
+  background-color: #FF8FB1;
+}
+
+// input.btn {
+//   background-color: #FF8FB1;
+//   border-radius: 15px;
+//   height: 40px;
+//   width: 120px;
+//   margin-bottom: 20px;
+
+//   a {
+//     color: #FCE2DB;
+//     font-size: 20px;
+//     }
+// }
+
+// input.btn:hover {
+//   background-color: #80489C;
+// }
