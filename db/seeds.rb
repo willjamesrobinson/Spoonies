@@ -9,7 +9,6 @@ require "open-uri"
 #   Character.create(name: "Luke", movie: movies.first)
 puts "cleaning database"
 Spooner.destroy_all
-User.destroy_all
 puts "seeding started"
 
 Spooner.destroy_all
@@ -50,18 +49,25 @@ REVIEW_CONTENT = [
   { rating: 4, content: "Lunch & spoon" }
 ]
 
+ADDRESSES = [
+  "Carlton, Melbourne", "Richmond, Melbourne", "Collingwood, Melbourne", "Fitzroy, Melbourne", "Mona Vale, Sydney", "Surry Hills, Sydney", "Bondi, Sydney"
+]
+
 spoon_counter = 0
 review_counter = 0
 
 # Seed Spooner
+num = 0
 10.times do
+  num += 1
   details = {
     name: Faker::Superhero.name,
     age: rand(18..50),
     spoon_type: ["big spoon", "little spoon", "any spoon"].sample,
     gender: ["male", "female"].sample,
     price: rand(2..100),
-    overview: SPOONER_OVERVIEW[spoon_counter]
+    overview: SPOONER_OVERVIEW[spoon_counter],
+    address: ADDRESSES.sample
   }
   spooner = Spooner.create(details)
   file1 = URI.open("https://source.unsplash.com/random/?person")
@@ -79,6 +85,11 @@ review_counter = 0
     review_counter += 1
   end
   spoon_counter += 1
+  if spoon_counter == 1
+    puts "#{num} Spooner Spooning"
+  else
+    puts "#{num} Spooners Spooning"
+  end
 end
 
 puts "seeding complete"

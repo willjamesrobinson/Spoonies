@@ -20,13 +20,15 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     # raise
     @booking.destroy
-    redirect_to root_path
+    redirect_to "/bookings/my_bookings"
   end
 
   def my_bookings
     @bookings = current_user.bookings.order(date: :desc)
     @pending_bookings = @bookings.where(pending: true)
     @active_bookings = @bookings.where(pending: false)
+    # bookings.date = @bookings do
+    # @past_bookings =
   end
   private
 

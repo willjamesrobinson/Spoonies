@@ -32,18 +32,37 @@
     </div>
   </div>
   <h2>Your Active Bookings</h2>
-  <div class="row">
-    <% @active_bookings.each do |booking| %>
-      <<div class="card col-3 rounded d-flex justify-content-between mb-4" style="width: 280px; padding: 0px;">
-          <%= cl_image_tag booking.spooner.img.first.key, height: 280, width: 280, crop: :fill, class: "w-100 border-bottom" %>
-          <div class="card-body">
-              <h5 class="card-title"> <%= "#{booking.spooner.name}, #{booking.spooner.age} "%> </h5>
-              <p class="card-text"> <%= booking.details %></p>
+  <div class="d-flex py-4">
+    <div class="row my-2 justify-content-between">
+      <% @active_bookings.each do |booking| %>
+        <div class="card col-3 rounded d-flex justify-content-between m-1" style="width: 280px; padding: 0px;">
+          <% if booking.spooner.img.attached? %>
+            <%= cl_image_tag booking.spooner.img.first.key, height: 280, width: 279, crop: :fill, class: "w-100 border-bottom" %>
+          <% else %>
+            <%= image_tag "person-placeholder.jpg",  width: 279 , height: 280, crop: :fill %>
+          <% end %>
+          <div class="card-body" style="background-color: rgb(255,143,177,0.2); padding: 10px 15px;">
+            <div class='row'>
+              <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black; font-size: 20px;"><strong><%=link_to booking.spooner.name, spooner_path(booking.spooner), class: "text-decoration-none"%></strong></p>
+              <div class="col-10">
+                <p class="card-text"> <%= booking.details %></p>
+                <p class ="card-text m-0"> <strong> <%= "Date: " + "#{booking.date.split('T')[0]}" %> </p> </strong>
+                <p class ="card-text m-0"> <strong> <%= " Time: #{booking.date.split('T')[1]} "  %> </p> </strong>
+              </div>
+              <div class="col-2 d-flex align-items-end justify-content-end">
+                <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Cancel Spooning Session?"} do %>
+                <%= image_tag "xspoons-purple.png", width: "30px", alt: "Cancel" %>
+                <% end %>
+                <%# <ul class="list-group list-group-flush"> %>
+                    <%# <li class="list-group-item mb-2"> <strong> <%= "Date: #{booking.date}" </strong></li> %>
+                <%# </ul> %>
+              </div>
+            </div>
           </div>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item mb-2"> <strong> <%= "Date: #{booking.date}" %> </strong></li>
-          </ul>
+        </div>
       <% end %>
     </div>
   </div>
+  <h2>Your past bookings</h2>
+
 </div>
