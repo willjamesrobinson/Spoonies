@@ -9,4 +9,28 @@ class Spooner < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
   has_many :reviews, dependent: :destroy
+
+  def average_rating
+    sum_ratings = reviews.reduce(0) { |sum, review| sum + review.rating }
+    average = sum_ratings.fdiv(reviews.size)
+    # round to nearest 0.5
+    (average * 2.0).round / 2.0
+  end
+
+  def solid_stars
+    average_rating.to_i
+  end
+
+  def half_stars
+    remainder = average_rating % 1
+    if remainder.zero?
+      return 0
+    else
+      return 1
+    end
+  end
+
+  def empty_stars
+    5 - solid_stars - half_stars
+  end
 end
