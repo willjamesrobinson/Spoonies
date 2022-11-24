@@ -18,9 +18,9 @@
                 <p class ="card-text m-0"> <strong> <%= " Time: #{booking.date.split('T')[1]} "  %> </p> </strong>
               </div>
               <div class="col-2 d-flex align-items-end justify-content-end">
-                <strong><%= link_to "X",
-                booking_path(booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-delete"%> </strong>
+                <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Delete Booking?"} do %>
+                <%= image_tag "xspoons-purple.png", width: "30px", alt: "Delete" %>
+                <% end %>
                 <%# <ul class="list-group list-group-flush"> %>
                     <%# <li class="list-group-item mb-2"> <strong> <%= "Date: #{booking.date}" </strong></li> %>
                 <%# </ul> %>
