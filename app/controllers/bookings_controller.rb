@@ -29,7 +29,21 @@ class BookingsController < ApplicationController
     @active_bookings = @bookings.where(pending: false)
     # bookings.date = @bookings do
     # @past_bookings =
+    # @past_bookings = past_bookings(@bookings)
   end
+
+  # def past_bookings(bookings)
+  #   past = []
+  #   bookings.each do |booking|
+  #     new_date = booking.date.split("T").join(" ")
+  #     puts new_date
+  #     DateTime.strptime(new_date)
+  #     if booking.date.past?
+  #       past << booking
+  #     end
+  #   end
+  #   return past
+  # end
   private
 
   def booking_params
