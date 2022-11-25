@@ -7,12 +7,13 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "cleaning database"
+puts "Cleaning database"
 Spooner.destroy_all
-puts "seeding started"
+User.destroy_all
+puts "Seeding started"
 
 ADDRESSES = [
-  "Carlton, Melbourne", "Richmond, Melbourne", "Collingwood, Melbourne", "Fitzroy, Melbourne", "Mona Vale, Sydney", "Surry Hills, Sydney", "Bondi, Sydney"
+  "Carlton, Melbourne", "Richmond, Melbourne", "Collingwood, Melbourne", "Fitzroy, Melbourne", "East Melbourne, Melbourne", "Abbotsford, Melbourne", "Melbourne, Victoria"
 ]
 
 SPOONER_DETAILS = [
@@ -123,6 +124,14 @@ SPOONER_DETAILS = [
     price: 66,
     overview: "Let me wrap my lengthy legs around your feeble body",
     address: ADDRESSES.sample
+
+    name: "Ariani",
+    age: 28,
+    spoon_type: "any spoon",
+    gender: "female",
+    price: 49,
+    overview: "Experienced at spooning my dog",
+    address: "Richmond, Melbourne"
   }
 ]
 
@@ -149,6 +158,8 @@ IMAGES = [
   "https://images.unsplash.com/photo-1498524943437-bd806c1592c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
   "https://images.unsplash.com/photo-1512548438457-4c9584d3766b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80",
   "https://images.unsplash.com/photo-1592399832410-451ec2efd5d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+  "https://images.unsplash.com/photo-1508329861810-e6f45abf4e95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1388&q=80",
+  "https://images.unsplash.com/photo-1623704793723-0f7458ca957a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"
 ]
 
 REVIEW_CONTENT = [
@@ -176,26 +187,34 @@ REVIEW_CONTENT = [
   { rating: 5, content: "That wooden spoon is magical" },
   { rating: 2, content: "Lachie sure loves his legs. Me? Less so." },
   { rating: 5, content: "Legs for days" },
+  { rating: 4, content: "Has a cute dog" },
+  { rating: 4, content: "Dog is a good spooner" }
 ]
 
 spoon_counter = 0
 review_counter = 0
 img_counter = 0
 
-user = User.create({
-  email: "user@gmail.com",
-  encrypted_password: "123456",
-  age: 50,
-  first_name: "Bob",
-  gender: "male",
-  spoon_type: "big spoon"
-}
+user = User.new(
+  {
+    email: "user@gmail.com",
+    password: "123456",
+    age: 50,
+    first_name: "Bob",
+    gender: "male",
+    spoon_type: "big spoon"
+  }
 )
+if user.save
+  puts "Created a user"
+else
+  puts "Failed to create a user"
+end
+
 
 # Seed Spooner
 num = 0
-10.times do
-
+11.times do
   num += 1
   spooner = Spooner.new(SPOONER_DETAILS[spoon_counter])
   spooner.user = user
