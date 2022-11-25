@@ -2,7 +2,6 @@
   background-color: #432C7A;
   border-radius: 15px;
   height: 60px;
-  width: 400px;
   text-decoration: none;
 
   a {
@@ -13,6 +12,10 @@
 
 .btn-show:hover {
   background-color: #FF8FB1;
+}
+
+.btn-lg {
+  width: 500px;
 }
 
 #form-submit-btn {

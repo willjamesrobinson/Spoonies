@@ -105,6 +105,24 @@ SPOONER_DETAILS = [
     price: 45,
     overview: "Are you soup because I want to spoon you.",
     address: ADDRESSES.sample
+  },
+  {
+    name: "Pitty Pitty Bang Bang",
+    age: 33,
+    spoon_type: "big spoon",
+    gender: "female",
+    price: 89,
+    overview: "Comes with a fun range of spooning accessories",
+    address: ADDRESSES.sample
+  },
+  {
+    name: "Long Legs Lachlan",
+    age: 30,
+    spoon_type: "little spoon",
+    gender: "male",
+    price: 66,
+    overview: "Let me wrap my lengthy legs around your feeble body",
+    address: ADDRESSES.sample
   }
 ]
 
@@ -128,7 +146,9 @@ IMAGES = [
   "https://images.unsplash.com/photo-1508002366005-75a695ee2d17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=668&q=80",
   "https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
   "https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-  "https://images.unsplash.com/photo-1498524943437-bd806c1592c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+  "https://images.unsplash.com/photo-1498524943437-bd806c1592c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+  "https://images.unsplash.com/photo-1512548438457-4c9584d3766b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80",
+  "https://images.unsplash.com/photo-1592399832410-451ec2efd5d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
 ]
 
 REVIEW_CONTENT = [
@@ -151,7 +171,11 @@ REVIEW_CONTENT = [
   { rating: 5, content: "This spooner's worth the hype" },
   { rating: 4, content: "My first time booking a spooner, they did not disappoint" },
   { rating: 4, content: "Reliable spoon" },
-  { rating: 4, content: "Lunch & spoon" }
+  { rating: 4, content: "Lunch & spoon" },
+  { rating: 1, content: "Over enthusiastic on the wooden spoon. I was uncomfortable." },
+  { rating: 5, content: "That wooden spoon is magical" },
+  { rating: 2, content: "Lachie sure loves his legs. Me? Less so." },
+  { rating: 5, content: "Legs for days" },
 ]
 
 spoon_counter = 0
