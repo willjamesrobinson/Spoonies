@@ -3,12 +3,11 @@ class SpoonersController < ApplicationController
   before_action :set_spooner, only: [:show, :edit, :update, :destroy]
 
   def index
-    # if params[:query].present?
-    #   @spooners = Spooner.where("name ILIKE ?", "%#{params[:query]}%")
-    # else
-    #   @spooners = Spooner.all
-    # end
-    @spooners = Spooner.all
+    if params[:query].present?
+      @spooners = Spooner.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @spooners = Spooner.all
+    end
     # The `geocoded` scope filters only flats with coordinates
     @markers = @spooners.geocoded.map do |spooner|
       {
@@ -43,8 +42,7 @@ class SpoonersController < ApplicationController
   end
 
   def home
-    @spooners = Spooner.all
-    authorize @spooners
+    index
   end
 
   def edit

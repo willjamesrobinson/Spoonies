@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    @bookmark.destroy
+    @booking.destroy
     authorize @booking
     redirect_to "/bookings/my_bookings"
   end
@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
   #   end
   #   return past
   # end
-  
+
   private
 
   def booking_params
