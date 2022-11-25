@@ -154,17 +154,28 @@ REVIEW_CONTENT = [
   { rating: 4, content: "Lunch & spoon" }
 ]
 
-
 spoon_counter = 0
 review_counter = 0
 img_counter = 0
+
+user = User.create({
+  email: "user@gmail.com",
+  encrypted_password: "123456",
+  age: 50,
+  first_name: "Bob",
+  gender: "male",
+  spoon_type: "big spoon"
+}
+)
 
 # Seed Spooner
 num = 0
 10.times do
 
   num += 1
-  spooner = Spooner.create(SPOONER_DETAILS[spoon_counter])
+  spooner = Spooner.new(SPOONER_DETAILS[spoon_counter])
+  spooner.user = user
+  spooner.save
   # Add Images
   2.times do
     file = URI.open(IMAGES[img_counter])
@@ -176,6 +187,7 @@ num = 0
   2.times do
     review = Review.new(REVIEW_CONTENT[review_counter])
     review.spooner = spooner
+    review.user = user
     review.save
     review_counter += 1
   end
