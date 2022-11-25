@@ -4,35 +4,36 @@
   <div class="d-flex py-4">
     <div class="row my-2 justify-content-between">
       <% spooners.each do |spooner| %>
-        <div class="card col-3 rounded d-flex justify-content-between mb-4" style="width: 280px; padding: 0px;">
-          <% if spooner.img.attached? %>
-            <%= cl_image_tag spooner.img.first.key, height: 280, width: 279, crop: :fill %>
-          <% else %>
-            <%= image_tag "person-placeholder.jpg",  width: 279 , height: 280, crop: :fill %>
-          <% end %>
-          <div class="card-body" style="background-color: rgb(255,143,177,0.2); padding: 10px 15px;">
-            <div class="row">
-              <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black; font-size: 20px;"><strong><%=link_to spooner.name, spooner_path(spooner), class: "text-decoration-none"%></strong></p>
-              <div class="col-10">
-
-                <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="mdi:silverware-spoon"></iconify-icon><%=spooner.spoon_type.capitalize%></p>
-                <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="bx:male-female"></iconify-icon><%=spooner.gender.capitalize%></p>
-                <% if spooner.reviews.size > 0 %>
-                <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;">
-                <% spooner.solid_stars.times do %>
-                <iconify-icon icon="material-symbols:star"></iconify-icon>
-                <% end %>
-                <% spooner.half_stars.times do %>
-                <iconify-icon icon="material-symbols:star-half"></iconify-icon>
-                <% end %>
-                <% spooner.empty_stars.times do %>
-                <iconify-icon icon="material-symbols:star-outline"></iconify-icon>
-                <% end %>
-                </p>
-                <% end %>
-              </div>
-              <div class="col-2 d-flex align-items-center justify-content-end">
-                <p class="card-text" style="margin-bottom: 0px; color: black; font-size: 36px; margin-right:10px;">$<%=spooner.price%></p>
+        <div class="col-lg-3 mb-4" >
+          <div class="card d-flex justify-content-between h-100">
+            <% if spooner.img.attached? %>
+              <div class="w-100" style="aspect-ratio: 1; background-image: url('<%= cl_image_path spooner.img.first.key,  width: 500 %>'); background-size: cover;"></div>
+            <% else %>
+              <div class="w-100" style="aspect-ratio: 1; background-image: url('<%= image_path "person-placeholder.jpg",  width: 500 %>'); background-size: cover;"></div>
+            <% end %>
+            <div class="card-body" style="background-color: rgb(255,143,177,0.2); padding: 10px 15px;">
+              <div class="row">
+                <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black; font-size: 20px;"><strong><%=link_to spooner.name, spooner_path(spooner), class: "text-decoration-none"%></strong></p>
+                <div class="col-10">
+                  <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="mdi:silverware-spoon"></iconify-icon><%=spooner.spoon_type.capitalize%></p>
+                  <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;"><iconify-icon icon="bx:male-female"></iconify-icon><%=spooner.gender.capitalize%></p>
+                  <% if spooner.reviews.size > 0 %>
+                  <p class="card-text d-flex align-items-center" style="margin-bottom: 0px; color: black;">
+                  <% spooner.solid_stars.times do %>
+                  <iconify-icon icon="material-symbols:star"></iconify-icon>
+                  <% end %>
+                  <% spooner.half_stars.times do %>
+                  <iconify-icon icon="material-symbols:star-half"></iconify-icon>
+                  <% end %>
+                  <% spooner.empty_stars.times do %>
+                  <iconify-icon icon="material-symbols:star-outline"></iconify-icon>
+                  <% end %>
+                  </p>
+                  <% end %>
+                </div>
+                  <div class="col-2 lg-6 d-flex align-items-center justify-content-end">
+                    <p class="card-text" style="margin-bottom: 0px; color: black; font-size: 36px;">$<%=spooner.price%></p>
+                  </div>
               </div>
             </div>
           </div>

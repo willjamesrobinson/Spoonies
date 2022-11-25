@@ -32,9 +32,11 @@
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
             %></button>
           <% end %>
+          <% if @spooner.user != current_user %>
           <div class="d-flex justify-content-center d-grid gap-2 mx-auto">
-            <button class="btn btn-show btn-lg" style="width "><%= link_to "Get Spoonin\'", new_spooner_booking_path(@spooner)  %></button>
+            <button class="btn btn-show btn-lg" style="width: 100;"><%= link_to "Get Spoonin\'", new_spooner_booking_path(@spooner)  %></button>
           </div>
+          <% end %>
         </div>
       </div>
     </div>

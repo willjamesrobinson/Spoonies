@@ -124,7 +124,8 @@ SPOONER_DETAILS = [
     price: 66,
     overview: "Let me wrap my lengthy legs around your feeble body",
     address: ADDRESSES.sample
-
+  },
+  {
     name: "Ariani",
     age: 28,
     spoon_type: "any spoon",
@@ -157,7 +158,9 @@ IMAGES = [
   "https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
   "https://images.unsplash.com/photo-1498524943437-bd806c1592c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
   "https://images.unsplash.com/photo-1512548438457-4c9584d3766b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80",
-  "https://images.unsplash.com/photo-1592399832410-451ec2efd5d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+  "https://images.unsplash.com/photo-1530283236834-b07129fc56b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80",
+  "https://images.unsplash.com/photo-1632482151560-ef0645f32999?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80",
+  "https://images.unsplash.com/photo-1592399832410-451ec2efd5d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
   "https://images.unsplash.com/photo-1508329861810-e6f45abf4e95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1388&q=80",
   "https://images.unsplash.com/photo-1623704793723-0f7458ca957a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"
 ]
@@ -214,7 +217,7 @@ end
 
 # Seed Spooner
 num = 0
-11.times do
+13.times do
   num += 1
   spooner = Spooner.new(SPOONER_DETAILS[spoon_counter])
   spooner.user = user
