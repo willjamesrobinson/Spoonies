@@ -13,7 +13,8 @@ class SpoonersController < ApplicationController
       {
         lat: spooner.latitude,
         lng: spooner.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {spooner: spooner})
+        info_window: render_to_string(partial: "info_window", locals: {spooner: spooner }),
+        image_url: helpers.asset_url("purple.png")
       }
     end
     authorize @spooners
